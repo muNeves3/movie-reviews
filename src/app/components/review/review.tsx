@@ -2,6 +2,7 @@ export interface ReviewProps {
   movieTitle: string;
   note: number;
   comment: string;
+  author: string;
 }
 
 export default function Review(props: ReviewProps) {
@@ -10,6 +11,9 @@ export default function Review(props: ReviewProps) {
       id="review"
       className="border-2 border-white rounded-lg w-auto min-w-50 sm:w-96 p-3 m-3"
     >
+      <p className="font-bold text-center text-sm sm:text-1xl">
+        Autor: {props.author}
+      </p>
       <p className="font-bold text-center text-base sm:text-1xl">
         Filme: {props.movieTitle}
       </p>

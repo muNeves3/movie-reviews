@@ -48,6 +48,7 @@ export default async function Home() {
                 movieTitle={review.movieTitle}
                 note={review.note}
                 comment={review.comment}
+                author={review.author}
               />
             ))}
           </div>
