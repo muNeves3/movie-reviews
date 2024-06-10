@@ -12,18 +12,18 @@ import {
 import db from "../utils/db";
 import Link from "next/link";
 
-async function getReviews() {
-  let docs: ReviewProps[] = [];
-  const q = query(collection(db, "Review"));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.docs.forEach((doc) => {
-    docs.push(doc.data() as ReviewProps);
-  });
-
-  return docs;
-}
-
 export default async function Home() {
+  async function getReviews() {
+    let docs: ReviewProps[] = [];
+    const q = query(collection(db, "Review"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.docs.forEach((doc) => {
+      docs.push(doc.data() as ReviewProps);
+    });
+
+    return docs;
+  }
+
   const docs = await getReviews();
 
   return (
