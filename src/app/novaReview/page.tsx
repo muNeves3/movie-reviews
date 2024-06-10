@@ -2,8 +2,10 @@
 import { doc, setDoc } from "firebase/firestore";
 import db from "../../utils/db";
 import { v4 } from "uuid";
+import { useRouter } from "next/navigation";
 
 export default function NewReview() {
+  const { push } = useRouter();
   async function onSubmit(formData: any) {
     const review = {
       movieTitle: formData.get("movieTitle"),
@@ -13,6 +15,8 @@ export default function NewReview() {
     };
 
     await setDoc(doc(db, "Review", v4()), review);
+
+    push("/");
   }
   return (
     <main className="flex min-h-screen flex-col items-center p-5 min-h-full">

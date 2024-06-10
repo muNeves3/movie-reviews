@@ -10,6 +10,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import db from "../utils/db";
+import Link from "next/link";
 
 async function getReviews() {
   let docs: ReviewProps[] = [];
@@ -38,6 +39,13 @@ export default async function Home() {
           height={300}
           className="rounded-full"
         />
+        <Link
+          href="/novaReview"
+          type="submit"
+          className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded ml-3 sm:mt-5"
+        >
+          Nova review
+        </Link>
 
         <div className="p-5">
           <p className="font-bold text-center text-3xl sm:text-2xl">Reviews</p>
