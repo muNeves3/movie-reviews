@@ -49,7 +49,6 @@ export default async function Home() {
                 note={review.note}
                 comment={review.comment}
                 author={review.author}
-                authorId={review.authorId}
               />
             ))}
           </div>
