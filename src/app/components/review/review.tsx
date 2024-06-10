@@ -7,9 +7,10 @@ export interface ReviewProps {
 
 export default function Review(props: ReviewProps) {
   return (
+    // from-indigo-500 via-purple-500 to-pink-500
     <div
       id="review"
-      className="border-2 border-white rounded-lg w-auto min-w-50 sm:w-96 p-3 m-3"
+      className={`border-4 border-white rounded-lg w-auto min-w-50 sm:w-96 p-3 m-3 `}
     >
       <p className="font-bold text-center text-sm sm:text-1xl">
         Autor: {props.author}
