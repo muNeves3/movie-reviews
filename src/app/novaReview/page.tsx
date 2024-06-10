@@ -12,6 +12,7 @@ export default function NewReview() {
       note: formData.get("note"),
       author: formData.get("author"),
       comment: formData.get("comment"),
+      creation_time: new Date().toISOString(),
     };
 
     await setDoc(doc(db, "Review", v4()), review);

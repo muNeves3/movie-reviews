@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Eueela from "../../images/eueeela.png";
 import Review, { ReviewProps } from "./components/review/review";
@@ -8,23 +9,30 @@ import {
   query,
   where,
   getDocs,
+  orderBy,
 } from "firebase/firestore";
 import db from "../utils/db";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
-  async function getReviews() {
-    let docs: ReviewProps[] = [];
-    const q = query(collection(db, "Review"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.docs.forEach((doc) => {
-      docs.push(doc.data() as ReviewProps);
-    });
+async function getReviews() {
+  let docs: ReviewProps[] = [];
+  const q = query(collection(db, "Review"), orderBy("creation_time", "desc"));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.docs.forEach((doc) => {
+    docs.push(doc.data() as ReviewProps);
+  });
 
-    return docs;
-  }
+  return docs;
+}
 
-  const docs = await getReviews();
+// const docs = await getReviews();
+
+export default function Home() {
+  const [reviews, setReviews] = useState<ReviewProps[]>([]);
+  useEffect(() => {
+    getReviews().then((reviews) => setReviews(reviews));
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center p-10">
@@ -50,7 +58,7 @@ export default async function Home() {
         <div className="p-5">
           <p className="font-bold text-center text-3xl sm:text-2xl">Reviews</p>
           <div id="reviews-group" className="p-4">
-            {docs.map((review, index) => (
+            {reviews.map((review, index) => (
               <Review
                 key={index}
                 movieTitle={review.movieTitle}

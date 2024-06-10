@@ -3,6 +3,7 @@ export interface ReviewProps {
   note: number;
   comment: string;
   author: string;
+  creation_time?: string;
 }
 
 export default function Review(props: ReviewProps) {
