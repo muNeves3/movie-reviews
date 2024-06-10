@@ -42,7 +42,7 @@ export default async function Home() {
         <Link
           href="/novaReview"
           type="submit"
-          className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded ml-3 sm:mt-5"
+          className="bg-blue-400 mt-3 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded ml-3 sm:mt-5"
         >
           Nova review
         </Link>
