@@ -51,6 +51,7 @@ export default function NewReview() {
               type="number"
               placeholder="0-10"
               name="note"
+              step="0.1"
               min={0}
               max={10}
             />
